@@ -1,0 +1,194 @@
+*{
+	margin:0;
+	padding: 0;
+}
+@font-face{
+	font-family: Roboto;
+	font-size: normal;
+	font-weight: normal;
+	src:url(../estilos/Roboto-Black.ttf);
+}
+:root{
+	--color_verde:#B6CF41;
+	--color_azul:#0292AB;
+	--color_gris:#96b8f6;
+
+}
+a:link{
+	text-decoration: none !important;
+
+}
+
+/*
+Colores de la pagina
+verde: #b6ce4d;
+azul: #00819e;
+verde del logo EB:#A1D436;
+*/
+body{
+	background: url(../images/fondo.png);
+}
+input[type="submit"]{
+	background: var(--color_azul);
+	width: 30%;
+	height: 2vw;
+	text-align: center;
+	border-radius: 25px;
+	box-shadow: 0px 3px;
+	color: white;
+
+}
+p{
+	font-family: Roboto;
+	font-size: 1.8vw;
+	color: white;
+	text-align: center;
+}
+label{
+	
+	font-family: Roboto;
+	font-size: 1.0vw;
+	color: blue;
+}
+.arriba{
+	background:var(--color_gris);
+	margin-top: 0.5vw;
+	margin-left: 3%;
+	margin-right: 3%;
+	width: 94%;
+	height: 4vw;
+}
+.centro{
+	background: var(--color_gris);
+	align-content: center;
+	margin-left: 35%;
+	margin-right: 35%;
+	margin-top: 3vw;
+	width: 30%;
+	height: 37vw;
+	position: relative;
+	border-radius: 25px;
+}
+.Error{
+	display: none;
+	position:absolute;
+	width:90%;
+	height:2vw;
+	border:red solid 1px;
+	border-radius:10px;
+	background: #ffa8b8;
+	opacity:0.8;
+	margin-top:7.5vw;
+	margin-left:5%;
+	margin-bottom:1vw;
+	font-size:1.5vw;
+	color:black;
+	text-align:center;
+	padding-top:.5vw;
+	
+}
+#Logo{
+	margin-left: 33%;
+	width: 30%;
+	margin-top: -3vw;
+	position: absolute;
+}
+.centro form{
+	position: absolute;
+	margin-top: 10vw;
+	margin-left: 5%;
+	width: 90%;
+	height: 25vw;
+	text-align: center;
+}
+
+.centro form label{
+	font-family: Roboto;
+	font-size: 1.5vw;
+}
+.centro form input{
+	width: 80%;
+	height: 2.3vw;
+	border-radius: 10px;
+	margin-bottom: 1vw;
+}
+button{
+	border-radius: 10px;
+	color: white;
+	margin-top: 1vw;
+	width: 22%;
+	height: 3vw;
+	border: none;
+}
+button{
+   /*border: 5px groove #0085a1;*/
+   background-color: #418600;
+    border-top: 1px solid transparent;
+   border-right: 10px solid #456D00;   
+   border-bottom: 1px solid transparent;
+   border-left: 10px solid #456D00;
+}
+button:active{
+	/*border: 5px inset #0085a1;
+	background: #0E94AF;*/
+	background-color: #456D00;
+    border-top: 1px solid transparent;
+   border-right: 10px solid #418600;   
+   border-bottom: 1px solid transparent;
+   border-left: 10px solid #418600;
+}
+
+a{
+	color: black;
+	font-family: Roboto;
+	margin-top: 3vw;
+}
+
+
+/*////////////////////////////Recuperar//////////////////////////////////*/
+#abajo_recu{
+	width: 100%;
+	display: flex;
+	
+
+}
+#abajo_recu #iz
+{
+	width: 50%;
+
+
+}
+#abajo_recu #iz img{
+	margin-left: 30%;
+	width: 30%;
+	margin-top: 3vw;
+}
+#abajo_recu #de
+{
+	width: 40%;
+	margin-top:8vw;
+	background: white;
+	border-radius: 20px;
+	text-align: center;
+
+}
+#abajo_recu #de input,#abajo_recu #de label{
+margin-bottom: 1vw;
+margin-top: 1.5vw;
+color: black;
+}
+#abajo_recu #de input[type=submit]{
+	color: white!important;
+}
+input[type="number"],input[type="text"], input[type="password"]{
+	text-align: center;
+	border-radius: 25px;
+	color:black;
+
+}
+
+#abajo_recu #de #subtitulo{
+	color: var(--color_azul);
+	margin-bottom: 1.5vw;
+	font-size: 2.5vw;
+}

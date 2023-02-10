@@ -1,0 +1,187 @@
+create database soluciones
+
+Create table departamento(
+    codigo int primary key AUTO_INCREMENT, 
+    cod_dian int, 
+    nombre varchar(50)
+)engine innodb
+
+insert into departamento (cod_dian,nombre) values
+(1245,'Cundinamarca'),
+(1456,'Bogota D.C.'),
+(2987,'Antioquia')
+
+Create table ciudad(
+    codigo int primary key AUTO_INCREMENT, 
+    cod_dian int, 
+    nombre varchar(50),
+    departamento int, 
+    foreign key (departamento) references departamento (codigo)  
+)engine innodb
+
+insert into ciudad (cod_dian, nombre , departamento) values 
+(1234,'Mosquera',1),
+(1235,'Funza',1),
+(1156,'Bogota D.C',2),
+(2234,'Medellin',3)
+
+
+Create table empresas(
+    codigo int primary key AUTO_INCREMENT, 
+    nit varchar(20),
+    digito int ,
+    nombre varchar(50),
+    logo text , 
+    direccion text,
+    ciudad int not null, 
+    representante varchar(100),
+    telefono varchar(15), 
+    correo text,  
+    cant_emple int ,
+    cant_max_ofertas int,
+    estado int, 
+    fecha_creacion date,
+    foreign key (ciudad) references ciudad (codigo)
+)engine innodb
+
+Create table estudios(
+    codigo int primary key AUTO_INCREMENT, 
+    descripcion text,
+    estado int
+)engine innodb
+
+insert into estudios(descripcion) values
+('Secundaria'),
+('Tecnico'),
+('Tecnologo'),
+('Universitario')
+
+create table sector(
+    codigo int not null primary key AUTO_INCREMENT,
+    descripcion varchar(100),
+    activo int default 1
+)engine innodb
+
+insert into sector (descripcion) values 
+('Tecnologia'),
+('Construccion'),
+('Salud')
+
+create table keywords(
+    codigo int not null  primary key AUTO_INCREMENT,
+    descripcion varchar(300)
+)engine innodb
+
+insert into keywords (descripcion) values 
+('Salud'),
+('Construcción'),
+('Hidrocarburos'),
+('Analista Financiero'),
+('Desarrollador'),
+('Sistemas ')
+
+Create table ofertas(
+    codigo int primary key AUTO_INCREMENT, 
+    empresa int not null, 
+    nombre varchar(100),
+    
+    descripcion text,   
+    cantidad_max int default -1,
+    salario int,
+    ciudad int ,
+    fecha_creacion date,
+    fecha_publicacion date,
+    fecha_vencimiento date,
+    sector int not null ,
+    experencia int,       
+    foreign key (ciudad) references ciudad (codigo),
+    foreign key (sector) references sector (codigo)
+)engine innodb
+
+create table estudio_oferta(
+    estudio int not null,
+    oferta int not null, 
+    primary key(estudio ,oferta),
+    activo int default 1,
+    fecha_creacion date,
+    foreign key (estudio) references estudios(codigo), 
+    foreign key (oferta) references ofertas(codigo)
+)engine innodb
+
+create table oferta_keyword(
+    oferta int not null,
+    keyword int not null,
+    primary key(oferta, keyword),
+    activo int  default 1,
+    foreign key (oferta) references ofertas(codigo), 
+    foreign key (keyword) references keywords(codigo)
+
+)engine innodb
+
+create table tipo_doc(
+    codigo int not null  primary key AUTO_INCREMENT,
+    descripcion varchar(200),
+    activo int default 1
+)engine innodb
+
+insert into tipo_doc (descripcion) values 
+('Cédula ciudadanía'),
+('Tarjeta identidad'),
+('Cédula extranjería ')
+
+
+create table persona(
+    codigo int not null  primary key AUTO_INCREMENT,
+    tipo_doc int not null,
+    numero_doc varchar(20),
+    nombre varchar(200),
+    apellido varchar(200),
+    fecha_nacimiento date,
+    ciudad int not null,
+    direccion text,
+    telefono varchar(15),
+    correo text not null,
+    curriculum text,
+    activo int default 1,
+    fecha_creacion date,
+    foreign key (tipo_doc) references tipo_doc(codigo),
+    foreign key (ciudad) references ciudad(codigo)
+
+)engine innodb
+
+create table usuario(
+    codigo int not null  primary key AUTO_INCREMENT,
+    persona int unique,
+    empresa int unique,
+    usuario varchar(200) not null,
+    contra text not null,
+    fecha_creacion date,
+    estado int default 1,
+    tipo int not null, 
+    foreign key (persona) references persona(codigo)
+)engine innodb
+
+create table estado_oferta(
+    codigo int not null   primary key AUTO_INCREMENT,
+    descripcion varchar(100) not null
+)engine innodb
+
+insert into estado_oferta (descripcion) values 
+('Postulacion'),
+('Entrevista'),
+('Pruebas'),
+('Contratacion')
+
+create table usuario_oferta(
+    persona int not null,
+    oferta  int not null,
+    primary key(persona, oferta),
+    fecha_creacion date not null,
+    estado int not null, 
+    activo int default 1,
+    foreign key (persona) references persona (codigo),
+    foreign key (oferta) references ofertas (codigo),
+    foreign key (estado) references estado_oferta (codigo)
+
+) engine innodb
+
